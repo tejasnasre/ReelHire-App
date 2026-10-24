@@ -24,8 +24,12 @@ export function playStoreUrl(appPath?: string, medium = "share") {
   return url.toString()
 }
 
-/** Play listing for the landing page's download buttons, attributed separately from shared job links. */
-export const LANDING_PLAY_URL = playStoreUrl(undefined, "landing")
+/**
+ * Where the landing page's download buttons go. The app isn't public yet, so
+ * this is the early-access form; swap back to `playStoreUrl(undefined, "landing")`
+ * once the Play listing is live.
+ */
+export const LANDING_PLAY_URL = "https://forms.gle/Zr3usJ3wmjMvvgLo8"
 
 export const CONTACT_HREF = "mailto:support@reelhire.xyz"
 

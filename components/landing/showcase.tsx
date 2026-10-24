@@ -3,9 +3,26 @@ import { Carousel_001 } from "@/components/ui/skiper-ui/skiper47"
 import { Phone, type ScreenName } from "./phone"
 import { PlayStoreButton } from "./primitives"
 
-const SCREENS: ScreenName[] = ["feed", "discover", "chat", "record", "applicants", "profile"]
+const SCREENS: ScreenName[] = [
+  "feed",
+  "discover",
+  "job",
+  "intro",
+  "feedBackend",
+  "record",
+  "profile",
+  "discoverRoles",
+  "myProfile",
+  "create",
+  "feedDesign",
+]
 // Swiper's loop needs more slides than fit on a wide screen, so run the set twice.
-const SLIDES = [...SCREENS, ...SCREENS].map((screen, i) => ({ key: `${screen}-${i}`, node: <Phone screen={screen} /> }))
+// The hero's LCP phone is "feed": next/image tracks loading per src, so a lazy
+// copy here would mask the hero's eager one. It's already cached, so eager is free.
+const SLIDES = [...SCREENS, ...SCREENS].map((screen, i) => ({
+  key: `${screen}-${i}`,
+  node: <Phone screen={screen} eager={screen === "feed"} notes />,
+}))
 
 export function Showcase() {
   return (
@@ -26,6 +43,7 @@ export function Showcase() {
         slidesPerView="auto"
         slideClassName="!w-[280px] py-6"
         spaceBetween={24}
+        visibleSides={3}
         autoplay
         autoplayDelay={2500}
         showPagination
@@ -35,8 +53,8 @@ export function Showcase() {
       <div className="relative mx-auto mt-14 max-w-xl px-4 text-center">
         <h3 className="text-2xl font-medium tracking-tight md:text-3xl">Hire for the person, not the paperwork.</h3>
         <p className="mt-3 text-muted-foreground text-pretty">
-          Stack, level and experience stay front and centre for filtering. The reel adds what a PDF never could: how
-          someone explains a trade-off, talks about their team and lights up about their work.
+          On ReelHire the reel comes first. It shows what a PDF never could: how someone explains a trade-off, talks
+          about their team and lights up about their work. Stack, level and experience sit right below it for filtering.
         </p>
         <PlayStoreButton className="mt-7" />
       </div>

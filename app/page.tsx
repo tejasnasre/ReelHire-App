@@ -1,4 +1,5 @@
 import { AudienceTabs } from "@/components/landing/audience-tabs"
+import { DevNotice } from "@/components/landing/dev-notice"
 import { DownloadCta } from "@/components/landing/download-cta"
 import { Faq } from "@/components/landing/faq"
 import { Features } from "@/components/landing/features"
@@ -8,7 +9,7 @@ import { HowItWorks } from "@/components/landing/how-it-works"
 import { Navbar } from "@/components/landing/navbar"
 import { Pricing } from "@/components/landing/pricing"
 import { Showcase } from "@/components/landing/showcase"
-import { StackGrid } from "@/components/landing/stack-grid"
+import { FoundingTeams } from "@/components/landing/founding-teams"
 import { LightLines } from "@/components/ui/light-lines"
 
 export default function Home() {
@@ -23,12 +24,13 @@ export default function Home() {
         linesOpacity={0.07}
         lightsOpacity={0.3}
       />
+      <DevNotice />
       <Navbar />
       <main>
         <Hero />
         <Showcase />
         <Features />
-        <StackGrid />
+        <FoundingTeams />
         <HowItWorks />
         <AudienceTabs />
         <Pricing />

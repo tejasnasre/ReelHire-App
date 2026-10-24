@@ -15,7 +15,7 @@ import { DotGrid, Eyebrow, SectionTitle, PlayStoreButton } from "./primitives"
 const STEPS = [
   {
     title: "Record your reel",
-    body: "Follow the built-in guide, trim it, and post a 20-90 second pitch.",
+    body: "Your reel is your application. Follow the built-in guide, trim it, and post a 20-90 second pitch.",
     visual: <ReelStack />,
   },
   {

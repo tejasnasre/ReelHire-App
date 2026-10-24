@@ -67,6 +67,7 @@ const Carousel_001 = ({
   autoplayDelay = 1500,
   spaceBetween = 40,
   slidesPerView = 2.43,
+  visibleSides,
 }: {
   images?: { src: string; alt: string }[];
   /** Arbitrary slide content, used instead of `images`. */
@@ -81,6 +82,8 @@ const Carousel_001 = ({
   autoplayDelay?: number;
   spaceBetween?: number;
   slidesPerView?: number | "auto";
+  /** Show only this many slides on each side of the active one; the rest fade out. */
+  visibleSides?: number;
 }) => {
   const reduceMotion = useReducedMotion();
   // Swiper reads the clock while it sets up, which Next.js won't allow during
@@ -143,6 +146,17 @@ const Carousel_001 = ({
           centeredSlides={true}
           loop={loop}
           slidesPerView={slidesPerView}
+          onProgress={(swiper) => {
+            if (visibleSides === undefined) return;
+            // Coverflow keeps each slide's distance from the active one in
+            // `progress`; fade slides out over the step past the limit.
+            for (const slide of swiper.slides) {
+              const distance = Math.abs((slide as HTMLElement & { progress: number }).progress);
+              const opacity = Math.min(1, Math.max(0, visibleSides + 1 - distance));
+              slide.style.opacity = String(opacity);
+              slide.style.pointerEvents = opacity === 0 ? "none" : "";
+            }
+          }}
           coverflowEffect={{
             rotate: 0,
             slideShadows: false,

@@ -12,8 +12,8 @@ export function Features() {
     <section id="features" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 md:px-8 md:py-28">
       <SectionTitle lead="Everything you need to" tail="hire and get hired." />
       <p className="mt-4 max-w-xl text-muted-foreground text-pretty">
-        Video resumes, job reels and the structured filters recruiters already rely on, in one swipeable app for tech
-        roles.
+        Video comes first. Every profile and every job is a reel, backed by the structured filters recruiters already
+        rely on.
       </p>
 
       <div className="mt-12 grid gap-4 md:grid-cols-3 md:grid-rows-[300px_300px]">
@@ -27,7 +27,7 @@ export function Features() {
             </p>
           </div>
           <div className="relative mt-8 flex h-[380px] justify-center md:h-[460px]">
-            <Phone screen="record" zoom={0.9} className="absolute top-0" />
+            <Phone screen="record" zoom={0.9} notes className="absolute top-0" />
           </div>
         </article>
 
@@ -59,8 +59,8 @@ export function Features() {
 
         {/* Filters */}
         <article className="relative overflow-hidden rounded-xl border bg-background p-6">
-          <h3 className="text-xl font-medium">Filters before video</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Narrow by stack, level and location, then watch.</p>
+          <h3 className="text-xl font-medium">Filter fast, then watch</h3>
+          <p className="mt-2 text-sm text-muted-foreground">Narrow by stack, level and location. Every match has a reel.</p>
           <div className="mt-5 rounded-lg border bg-card p-3 shadow-sm">
             <div className="flex flex-wrap gap-1.5">
               {["Junior", "Mid", "Senior", "Staff"].map((l) => (

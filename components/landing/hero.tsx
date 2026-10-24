@@ -2,11 +2,10 @@ import { PlayIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { InfiniteSlider } from "@/components/grootstudio/logo-marquee"
-import { buttonVariants } from "@/components/ui/button"
+import { LiquidMetalButton } from "@/components/liquid-metal-button"
 import { Skiper67 } from "@/components/ui/skiper-ui/skiper67"
 import TextAnimation from "@/components/ui/staggerText"
 import { LANDING_PLAY_URL } from "@/lib/app-links"
-import { cn } from "@/lib/utils"
 
 import { FEATURE_CHIPS } from "./data"
 import { GooglePlayIcon } from "./google-play-icon"
@@ -27,7 +26,7 @@ export function Hero() {
           <TextAnimation delay={0.15}>told in reels.</TextAnimation>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base text-pretty text-muted-foreground md:text-lg">
-          ReelHire swaps resumes and job posts for short vertical videos. Candidates pitch, teams pitch back.
+          The video-first hiring app for tech. Every candidate applies with a reel, and every job is posted as one.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -37,10 +36,11 @@ export function Hero() {
           </BlackButton>
           <Skiper67
             {...SHOWREEL}
+            as={LiquidMetalButton}
             radius={22}
             playHint={false}
             label="Watch the demo"
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 bg-background px-5 shadow-xs")}
+            className="h-11"
           >
             <HugeiconsIcon icon={PlayIcon} data-icon="inline-start" />
             Watch the demo
@@ -59,13 +59,13 @@ function HeroPhones() {
     <div className="relative mx-auto mt-14 h-[430px] max-w-5xl overflow-hidden md:mt-16 md:h-[520px]">
 
       <div className="absolute top-24 right-[calc(50%+80px)] hidden -rotate-[8deg] sm:block md:right-[calc(50%+110px)]">
-        <Phone screen="discover" zoom={0.82} />
+        <Phone screen="discover" zoom={0.82} notes />
       </div>
       <div className="absolute top-24 left-[calc(50%+80px)] hidden rotate-[8deg] sm:block md:left-[calc(50%+110px)]">
-        <Phone screen="applicants" zoom={0.82} />
+        <Phone screen="profile" zoom={0.82} notes />
       </div>
       <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2">
-        <Phone screen="feed" />
+        <Phone screen="feed" eager notes />
       </div>
 
       <div aria-hidden className="absolute inset-x-0 bottom-0 z-20 h-40 bg-gradient-to-t from-card via-card/80 to-transparent" />

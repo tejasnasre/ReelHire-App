@@ -1,7 +1,7 @@
 // For adding custom fonts with other frameworks, see:
 // https://tailwindcss.com/docs/font-family
 import type { Metadata } from "next";
-import { Manrope, Fira_Code } from "next/font/google";
+import { Caveat, Manrope, Fira_Code } from "next/font/google";
 import "./globals.css";
 
 // Manrope matches the ReelHire mobile app (app/assets/font/Manrope).
@@ -15,10 +15,17 @@ const fontMono = Fira_Code({
   variable: "--font-mono",
 });
 
+// Handwriting for the doodled notes over the phones, as in the app's welcome screen.
+const fontHand = Caveat({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-hand",
+});
+
 export const metadata: Metadata = {
-  title: "ReelHire: Tech hiring, told in reels",
+  title: "ReelHire | Video-First Hiring App",
   description:
-    "ReelHire is a reels-style hiring app for tech roles. Candidates apply with short video resumes and teams post video job reels.",
+    "ReelHire is the video-first hiring app for tech roles. Every candidate applies with a short video resume and every job is posted as a video reel.",
 };
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} ${fontHand.variable} font-sans antialiased`}
       >
         {children}
       </body>

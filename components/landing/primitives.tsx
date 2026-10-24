@@ -77,38 +77,13 @@ export function PlayStoreButton({ className, href = LANDING_PLAY_URL }: { classN
   return (
     <div className={cn("flex justify-center", className)}>
       <BlackButton href={href} aria-label="Get it on Google Play" className="h-12 pr-6 pl-5">
-        <GooglePlayIcon className="mr-2.5 size-5!" />
-        <span className="flex flex-col items-start leading-none">
-          <span className="text-[9px] font-medium tracking-[0.14em] uppercase opacity-75">Get it on</span>
-          <span className="mt-1 text-base font-semibold tracking-tight">Google Play</span>
+        <GooglePlayIcon className="mr-2 size-5!" />
+        <span className="flex flex-col items-start gap-[5px]">
+          <span className="text-[9px] leading-none font-medium tracking-[0.08em] uppercase opacity-75">Get it on</span>
+          <span className="text-base leading-none font-semibold tracking-tight">Google Play</span>
         </span>
       </BlackButton>
     </div>
-  )
-}
-
-export function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .replace(/[^A-Z]/gi, "")
-    .slice(0, 2)
-    .toUpperCase()
-}
-
-/** Square-cornered monogram, matching the app's square avatars. */
-export function Monogram({ name, className }: { name: string; className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "grid size-9 shrink-0 place-items-center rounded-md bg-secondary text-xs font-semibold text-secondary-foreground",
-        className,
-      )}
-    >
-      {initials(name)}
-    </span>
   )
 }
 

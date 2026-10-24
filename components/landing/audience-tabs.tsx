@@ -2,6 +2,7 @@
 
 import { Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { motion, useReducedMotion } from "motion/react"
 import { useState } from "react"
 
 import StatsCounter from "@/components/ui/stats-counter"
@@ -15,6 +16,7 @@ import { DotGrid, SectionTitle } from "./primitives"
 export function AudienceTabs() {
   const [activeId, setActiveId] = useState(PERSONAS[0].id)
   const active = PERSONAS.find((p) => p.id === activeId) ?? PERSONAS[0]
+  const reduce = useReducedMotion()
 
   return (
     <section className="px-4 md:px-8">
@@ -41,12 +43,20 @@ export function AudienceTabs() {
                 aria-controls="persona-panel"
                 onClick={() => setActiveId(p.id)}
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
-                  p.id === active.id ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
+                  "relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-300",
+                  p.id === active.id ? "text-background" : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                <HugeiconsIcon icon={p.icon} size={15} />
-                {p.label}
+                {/* One shared pill that slides between tabs instead of two cross-fading backgrounds. */}
+                {p.id === active.id ? (
+                  <motion.span
+                    layoutId="persona-tab-pill"
+                    transition={reduce ? { duration: 0 } : { type: "spring", bounce: 0.15, duration: 0.45 }}
+                    className="absolute inset-0 rounded-full bg-foreground"
+                  />
+                ) : null}
+                <HugeiconsIcon icon={p.icon} size={15} className="relative" />
+                <span className="relative">{p.label}</span>
               </button>
             ))}
           </div>
@@ -71,7 +81,7 @@ export function AudienceTabs() {
                 {active.points.map((point) => (
                   <li
                     key={point}
-                    className="flex items-center gap-1.5 rounded-md border border-white/15 bg-white/10 px-2.5 py-1 text-xs backdrop-blur"
+                    className="flex items-center gap-1.5 rounded-md border border-white/15 bg-white/10 px-2.5 py-1 text-xs"
                   >
                     <HugeiconsIcon icon={Tick02Icon} size={12} />
                     {point}
@@ -86,7 +96,7 @@ export function AudienceTabs() {
               ) : null}
             </div>
             <div className="relative hidden md:block">
-              <Phone screen={active.screen} zoom={0.85} className="absolute top-10 left-1/2 -translate-x-1/2" />
+              <Phone screen={active.screen} zoom={0.85} notes className="absolute top-10 left-1/2 -translate-x-1/2" />
             </div>
           </div>
         </div>
