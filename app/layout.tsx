@@ -2,6 +2,7 @@
 // https://tailwindcss.com/docs/font-family
 import type { Metadata } from "next";
 import { Caveat, Manrope, Fira_Code } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Manrope matches the ReelHire mobile app (app/assets/font/Manrope).
@@ -39,6 +40,7 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontMono.variable} ${fontHand.variable} font-sans antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
